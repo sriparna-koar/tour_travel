@@ -6,6 +6,7 @@ const tripSchema = new Schema({
   tripDate: { type: Date, required: true },
   hotelName: { type: String, required: true },
   price: { type: Number, required: true },
+  locationVisited: { type: String, required: true },
 });
 
 module.exports = mongoose.model('Trip', tripSchema);
