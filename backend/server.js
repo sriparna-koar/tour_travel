@@ -18,18 +18,19 @@ mongoose.connect('mongodb+srv://koarsk03:czBOQJPJnyItRbMp@cloudpadproject.qugmdj
   useUnifiedTopology: true,
 });
 
-// User routes
+
 app.post('/signup', userRoutes.signup);
 app.post('/login', userRoutes.login);
 app.post('/logout', userRoutes.logout);
-// Proapp.post('/login', userRoutes.login);tected route
+
 app.get('/protected', verifyToken, (req, res) => {
   res.send('This is a protected route');
 });
 
-// Trip routes
-app.post('/addtrip', tripController.addTrip); // Corrected URL path
-app.get('/trips',  tripController.getTripsPastYear);
+app.post('/addtrip', tripController.addTrip); 
+app.get('/trips',  tripController.getAllTrips);
 
+app.put('/trips/:id', tripController.updateTrip); // Update trip route
+app.delete('/trips/:id', tripController.deleteTrip);
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
