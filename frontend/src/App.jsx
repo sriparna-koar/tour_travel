@@ -7,6 +7,9 @@ import React, { useState,useEffect } from 'react';
 import axios from 'axios';
 import { BrowserRouter as Router, Routes, Route, Link, Navigate,useNavigate  } from 'react-router-dom';
 import Chat from './Chat';
+import BookingForm from './components/BookingForm';
+import Hotel from './components/Hotel';
+import Weather from './components/Weather';
 
 const SignUp = () => {
   const [username, setUsername] = useState('');
@@ -93,15 +96,17 @@ const Login = () => {
 const Home = () => {
   return <h1>Welcome to the Home Page!</h1>;
 };
-
 const AddTrip = () => {
-  // const [customername, setcustomername] = useState('');
-  const [tripDate, setTripDate] = useState('');
-  const [hotelName, setHotelName] = useState('');
-  const [price, setPrice] = useState('');
 
+  const [tripDate, setTripDate] = useState('');
+  const [name, setname] = useState('');
+  const [hotelName, setHotelName] = useState('');
+
+  const [price, setPrice] = useState('');
   const [locationVisited, setlocationVisited] = useState('');
   const [message, setMessage] = useState('');
+ 
+
   const navigate = useNavigate();
 
   const isLoggedIn = localStorage.getItem('isLoggedIn');
@@ -114,7 +119,7 @@ const AddTrip = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/addtrip', { tripDate, hotelName, price,locationVisited });
+      await axios.post('http://localhost:5000/addtrip', { tripDate, name, hotelName, price,locationVisited });
       setMessage('Trip added successfully');
     } catch (error) {
       console.error(error);
@@ -127,12 +132,12 @@ const AddTrip = () => {
     <div>
       <h2>Add Trip</h2>
       <form onSubmit={handleSubmit}>
-      {/* <input type="text" value={customername} onChange={(e) => setcustomername(e.target.value)} placeholder="Customer Name" required /> */}
+      <input type="text" value={name} onChange={(e) => setname(e.target.value)} placeholder="Enter Name" required />
         <input type="date" value={tripDate} onChange={(e) => setTripDate(e.target.value)} placeholder="Trip Date" required />
         <input type="text" value={hotelName} onChange={(e) => setHotelName(e.target.value)} placeholder="Hotel Name" required />
         <input type="number" value={price} onChange={(e) => setPrice(e.target.value)} placeholder="Price" required />
-    
         <input type="text" value={locationVisited} onChange={(e) => setlocationVisited(e.target.value)} placeholder="Visited Location" required /> {/* New input field */}
+
         <button type="submit">Add Trip</button>
       </form>
       {message && <p>{message}</p>}
@@ -145,26 +150,79 @@ const AllTrips = () => {
   const navigate = useNavigate();
 
   const isLoggedIn = localStorage.getItem('isLoggedIn');
+
+  const fetchTrips = async () => {
+    try {
+      const response = await axios.get('http://localhost:5000/trips');
+      setTripDetails(response.data.trips);
+    } catch (error) {
+      console.error(error);
+      setMessage('Error fetching trips');
+    }
+  };
+
   useEffect(() => {
-  
     if (!isLoggedIn) {
       navigate('/login');
     }
   }, [isLoggedIn, navigate]);
-  useEffect(() => {
-    const fetchTrips = async () => {
-      try {
-        const response = await axios.get('http://localhost:5000/trips');
-        setTripDetails(response.data.trips);
-      } catch (error) {
-        console.error(error);
-        setMessage('Error fetching trips');
-      }
-    };
 
+  useEffect(() => {
     fetchTrips();
   }, []);
 
+  const handleDelete = async (tripId) => {
+    try {
+      const response = await axios.delete(`http://localhost:5000/deletetrip/${tripId}`);
+      console.log('Trip deleted:', response.data);
+      fetchTrips(); // Call fetchTrips after successful deletion
+    } catch (error) {
+      console.error('Error deleting trip:', error);
+      setMessage('Internal server error.');
+    }
+  };
+
+// const AllTrips = () => {
+//   const [tripDetails, setTripDetails] = useState([]);
+//   const [message, setMessage] = useState('');
+//   const navigate = useNavigate();
+
+//   const isLoggedIn = localStorage.getItem('isLoggedIn');
+//   useEffect(() => {
+  
+//     if (!isLoggedIn) {
+//       navigate('/login');
+//     }
+//   }, [isLoggedIn, navigate]);
+//   useEffect(() => {
+//     const fetchTrips = async () => {
+//       try {
+//         const response = await axios.get('http://localhost:5000/trips');
+//         setTripDetails(response.data.trips);
+//       } catch (error) {
+//         console.error(error);
+//         setMessage('Error fetching trips');
+//       }
+//     };
+
+//     fetchTrips();
+//   }, []);
+  
+ 
+ 
+//   const handleDelete = async (tripId) => {
+//     try {
+//       const response = await axios.delete(`http://localhost:5000/deletetrip/${tripId}`);
+//       console.log('Trip deleted:', response.data);
+//       fetchTrips();
+//     } catch (error) {
+//       console.error('Error deleting trip:', error);
+//       setMessage('Internal server error.');
+//     }
+//   };
+  
+  
+  
   return (
     <div>
       <h2>All Trips</h2>
@@ -174,58 +232,19 @@ const AllTrips = () => {
         <ul>
           {tripDetails.map(trip => (
             <li key={trip._id}>
+              <p>Name: {trip.name}</p>
               <p>Trip Date: {trip.tripDate}</p>
               <p>Hotel Name: {trip.hotelName}</p>
+      
               <p>Location Visited: {trip.locationVisited}</p>
               <p>Price: {trip.price}</p>
+  
+              <button onClick={() => handleDelete(trip._id)}>Delete Trip</button>
             </li>
           ))}
         </ul>
       )}
       {message && <p>{message}</p>}
-    </div>
-  );
-};
-const Weather = () => {
-  const [city, setCity] = useState('');
-  const [weatherData, setWeatherData] = useState(null);
-  const [error, setError] = useState(null);
-
-  const API_KEY = '27e15b0805a28f7ffa546b57b51f108c';
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`);
-      if (!response.ok) {
-        throw new Error('City not found');
-      }
-      const data = await response.json();
-      setWeatherData(data);
-      setError(null);
-    } catch (error) {
-      console.error(error);
-      setError(error.message);
-      setWeatherData(null);
-    }
-  };
-  
-  return (
-    <div>
-      <h2>Weather</h2>
-      <form onSubmit={handleSubmit}>
-        <input type="text" value={city} onChange={(e) => setCity(e.target.value)} placeholder="Enter city name" required />
-        <button type="submit">Get Weather</button>
-      </form>
-      {error && <p>{error}</p>}
-      {weatherData && (
-        <div>
-          <h3>Weather in {weatherData.name}</h3>
-          <p>Temperature: {weatherData.main.temp} °C</p>
-          <p>Humidity: {weatherData.main.humidity}%</p>
-          <p>Weather: {weatherData.weather[0].main}</p>
-        </div>
-      )}
     </div>
   );
 };
@@ -246,10 +265,16 @@ const App = () => {
               <Link to="/addtrip">Add Trip</Link>
             </li>
             <li>
-              <Link to="/alltrips">All Trips</Link>
+              <Link to="/alltrip">All Trips</Link>
+            </li>
+            <li>
+              <Link to="/booking">Booking Details</Link>
             </li>
             <li>
               <Link to="/weather">Weather</Link>
+            </li>
+            <li>
+              <Link to="/hotels">Sample Hotels</Link>
             </li>
             <li>
               <Link to="/Chat">Chat</Link>
@@ -261,7 +286,9 @@ const App = () => {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
           <Route path="/addtrip" element={<AddTrip />} />
-          <Route path="/alltrips" element={<AllTrips />} />
+          <Route path="/alltrip" element={<AllTrips />} />
+          <Route path="/hotels" element={<Hotel />} />
+          <Route path="/booking" element={<BookingForm />} />
           <Route path="/weather" element={<Weather />} />
           <Route path="/Chat" element={<Chat />} />
         </Routes>

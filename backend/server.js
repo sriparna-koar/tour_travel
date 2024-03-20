@@ -1,5 +1,4 @@
 
-
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -7,7 +6,8 @@ const mongoose = require('mongoose');
 const userRoutes = require('./controllers/userController');
 const tripController = require('./controllers/tripController');
 const { verifyToken } = require('./middlewares/authMiddleware');
-
+const bookingController = require('./controllers/bookingController');
+const hotelController = require('./controllers/hotelController');
 const app = express();
 
 app.use(bodyParser.json());
@@ -18,7 +18,7 @@ mongoose.connect('mongodb+srv://koarsk03:czBOQJPJnyItRbMp@cloudpadproject.qugmdj
   useUnifiedTopology: true,
 });
 
-
+// Routes
 app.post('/signup', userRoutes.signup);
 app.post('/login', userRoutes.login);
 app.post('/logout', userRoutes.logout);
@@ -29,8 +29,10 @@ app.get('/protected', verifyToken, (req, res) => {
 
 app.post('/addtrip', tripController.addTrip); 
 app.get('/trips',  tripController.getAllTrips);
+app.delete('/deletetrip/:id', tripController.deleteTrip);
+app.post('/create', bookingController.createBooking);
+app.post('/hotels', hotelController.addHotel);
+app.get('/hotels', hotelController.getAllHotels);
 
-app.put('/trips/:id', tripController.updateTrip); // Update trip route
-app.delete('/trips/:id', tripController.deleteTrip);
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
