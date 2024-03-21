@@ -1,38 +1,48 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+
 const Hotel = () => {
-    const [hotels, setHotels] = useState([]);
-  
-    useEffect(() => {
-      const fetchHotels = async () => {
-        try {
-          const response = await fetch('http://localhost:5000/hotels');
-          if (!response.ok) {
-            throw new Error('Failed to fetch hotels');
-          }
-          const data = await response.json();
-          setHotels(data);
-        } catch (error) {
-          console.error('Error fetching hotels:', error);
+  const [hotels, setHotels] = useState([]);
+
+  useEffect(() => {
+    const fetchHotels = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/hotels');
+        if (!response.ok) {
+          throw new Error('Failed to fetch hotels');
         }
-      };
-  
-      fetchHotels();
-    }, []);
-  
-    return (
-      <div>
-        <h1>Hotels</h1>
-        {hotels.map(hotel => (
-          <div key={hotel._id}>
-            <img src={hotel.picture} alt={hotel.name} />
-            <h2>{hotel.name}</h2>
-            <p>Price: ${hotel.price}</p>
-            <p>Location: {hotel.location}</p>
-            <p>Food Supply: {hotel.foodSupply ? 'Available' : 'Not Available'}</p>
-            <p>Nearby Features: {hotel.nearbyFeatures.join(', ')}</p>
+        const data = await response.json();
+        setHotels(data);
+      } catch (error) {
+        console.error('Error fetching hotels:', error);
+      }
+    };
+
+    fetchHotels();
+  }, []);
+
+  return (
+    <div className="hotel-container">
+      <h1 className="hotel-heading">Hotels</h1>
+      {hotels.map((hotel, index) => (
+        <div key={index} className="hotel-card">
+          <div className="hotel-image-container">
+            <img src={hotel.picture} alt={hotel.name} className="hotel-image" />
           </div>
-        ))}
-      </div>
-    );
-  };
-  export default Hotel;
+          <div className="hotel-details">
+            <h2 className="hotel-name">{hotel.name}</h2>
+            <p className="hotel-price">Price: ${hotel.price}</p>
+            <p className="hotel-location">Location: {hotel.location}</p>
+            <p className="hotel-food-supply">
+              Food Supply: {hotel.foodSupply ? 'Available' : 'Not Available'}
+            </p>
+            <p className="hotel-nearby-features">
+              Nearby Features: {hotel.nearbyFeatures.join(', ')}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+export default Hotel;
