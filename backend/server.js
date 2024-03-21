@@ -33,6 +33,6 @@ app.delete('/deletetrip/:id', tripController.deleteTrip);
 app.post('/create', bookingController.createBooking);
 app.post('/hotels', hotelController.addHotel);
 app.get('/hotels', hotelController.getAllHotels);
-
-const PORT = process.env.PORT || 5000;
+const PORT = 5000;
+// const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
