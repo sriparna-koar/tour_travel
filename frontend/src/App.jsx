@@ -3,11 +3,11 @@
 import React, { useState,useEffect } from 'react';
 import axios from 'axios';
 import { BrowserRouter as Router, Routes, Route, Link, Navigate,useNavigate  } from 'react-router-dom';
-import Chat from './Chat';
+// import Chat from './Chat';
 import BookingForm from './components/BookingForm';
 import Hotel from './components/Hotel';
 import Weather from './components/Weather';
-import 'animate.css/animate.min.css';
+
 // const SignUp = () => {
 //   const [username, setUsername] = useState('');
 //   const [email, setEmail] = useState('');
