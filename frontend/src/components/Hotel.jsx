@@ -6,7 +6,7 @@ const Hotel = () => {
   useEffect(() => {
     const fetchHotels = async () => {
       try {
-        const response = await fetch('http://localhost:5000/hotels');
+        const response = await fetch('https://tour-travel-uuoe.onrender.com//hotels');
         if (!response.ok) {
           throw new Error('Failed to fetch hotels');
         }

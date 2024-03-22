@@ -55,7 +55,7 @@ const SignUp = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/signup', { username, email, password, phone, location });
+      await axios.post('https://tour-travel-uuoe.onrender.com//signup', { username, email, password, phone, location });
       setMessage('User created successfully');
     } catch (error) {
       console.error(error);
@@ -104,7 +104,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/login', { email, password });
+      const response = await axios.post('https://tour-travel-uuoe.onrender.com//login', { email, password });
       console.log(response.data);
       setMessage('Login successful');
       localStorage.setItem('isLoggedIn', true);
@@ -219,7 +219,7 @@ const AddTrip = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/addtrip', { tripDate, name, hotelName, price, locationVisited });
+      await axios.post('https://tour-travel-uuoe.onrender.com//addtrip', { tripDate, name, hotelName, price, locationVisited });
       setMessage('Trip added successfully');
     } catch (error) {
       console.error(error);
@@ -252,7 +252,7 @@ const AllTrips = () => {
 
   const fetchTrips = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/trips');
+      const response = await axios.get('https://tour-travel-uuoe.onrender.com//trips');
       setTripDetails(response.data.trips);
     } catch (error) {
       console.error(error);
@@ -272,7 +272,7 @@ const AllTrips = () => {
 
   const handleDelete = async (tripId) => {
     try {
-      const response = await axios.delete(`http://localhost:5000/deletetrip/${tripId}`);
+      const response = await axios.delete(`https://tour-travel-uuoe.onrender.com//deletetrip/${tripId}`);
       console.log('Trip deleted:', response.data);
       fetchTrips(); // Call fetchTrips after successful deletion
     } catch (error) {
