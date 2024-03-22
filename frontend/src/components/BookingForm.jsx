@@ -22,7 +22,7 @@ const BookingForm = () => {
   const handleSubmit = async e => {
     e.preventDefault();
     try {
-      await axios.post('https://tour-travel-uuoe.onrender.com//create', formData);
+      await axios.post('https://tour-travel-uuoe.onrender.com/create', formData);
       alert('Booking created successfully');
       // Clear form after submission
       setFormData({
