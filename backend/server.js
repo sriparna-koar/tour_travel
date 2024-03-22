@@ -17,7 +17,10 @@ mongoose.connect('mongodb+srv://koarsk03:czBOQJPJnyItRbMp@cloudpadproject.qugmdj
   // useNewUrlParser: true,
   // useUnifiedTopology: true,
 });
-
+app.get('/', (request, response) => {
+  console.log(request);
+  return response.status(234).send('Welcome To MERN Stack Tutorial');
+});
 // Routes
 app.post('/signup', userRoutes.signup);
 app.post('/login', userRoutes.login);
