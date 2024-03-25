@@ -1,0 +1,142 @@
+/* Home Page Styles */
+.home-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100vh;
+}
+
+.background-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('background.jpeg'); /* Add your background image */
+    background-size: cover;
+    background-position: center;
+    
+}
+.content-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  
+  .banner {
+    margin-bottom: 30px;
+  }
+  
+  .tour-travel-logo {
+    width: 150px; /* Adjust size as needed */
+    margin-bottom: 20px; /* Add spacing between logo and text */
+  }
+  
+  .explore-heading {
+    font-size: 30px; /* Increase font size */
+    margin-bottom: 20px; 
+    color:#0b1723/* Add spacing below heading */
+  }
+  
+  .trip-paragraph {
+    font-size: 16px; /* Increase font size */
+    line-height: 1.6; /* Adjust line height for better readability */
+    margin-bottom: 20px; /* Add spacing below paragraphs */
+  }
+.background-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)); /* Overlay gradient */
+}
+
+.content-container {
+    position: relative;
+    z-index: 1; /* Ensure content is above the background */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    color: #fff; /* Text color */
+}
+
+.banner h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.banner p {
+    font-size: 24px;
+    margin-bottom: 40px;
+}
+
+.trip-info {
+    display: flex;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.trip-info img {
+    width: 300px; /* Increase image size */
+    margin-right: 20px;
+}
+
+.trip-description h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.trip-description p {
+    font-size: 26px;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.explore-btn {
+   
+    font-size: 18px;
+    background-color: #0b1723;
+    color: #fff;
+    border: none;
+ 
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.explore-btn:hover {
+    background-color: #0056b3;
+}
+
+.dark-blue-shady {
+    filter: brightness(0.3); /* Darken the background */
+    transition: filter 0.3s ease; /* Transition for brightness */
+}
+/* Home.css */
+
+/* Animation for logo */
+@keyframes logoAnimation {
+    0% {
+      transform: scale(0.8) rotate(0deg);
+    }
+   
+   
+  }
+  
+  .tour-travel-logo {
+    width: 150px; /* Adjust size as needed */
+    margin-bottom: 20px; /* Add spacing between logo and text */
+    animation: logoAnimation 5s infinite ease-in-out; /* Apply animation */
+    border-radius: 50%; /* Make the logo circular */
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3); /* Add shadow effect */
+    transition: transform 0.3s ease-in-out; /* Add smooth transition */
+  }
+  
+  .tour-travel-logo:hover {
+    transform: scale(1.1); /* Zoom in on hover */
+  }
+  
