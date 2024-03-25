@@ -3,7 +3,7 @@
 import React, { useState,useEffect } from 'react';
 import axios from 'axios';
 import { BrowserRouter as Router, Routes, Route, Link, Navigate,useNavigate  } from 'react-router-dom';
-// import Chat from './Chat';
+import Chat from './Chat';
 import Home from './components/Home';
 import BookingForm from './components/BookingForm';
 import Hotel from './components/Hotel';
@@ -243,7 +243,7 @@ const App = () => {
         <Route path="/hotels" element={<Hotel />} />
         <Route path="/booking" element={<BookingForm />} />
         <Route path="/weather" element={<Weather />} />
-        {/* <Route path="/Chat" element={<Chat />} /> */}
+        <Route path="/Chat" element={<Chat />} />
       </Routes>
     </div>
   </Router>

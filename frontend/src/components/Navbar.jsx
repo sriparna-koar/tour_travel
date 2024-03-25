@@ -188,6 +188,9 @@ const Navbar = () => {
             <WeatherIcon /> Weather
           </Link>
         </li>
+          <li>
+             <Link to="/Chat" className="nav-link">Chat</Link>
+           </li>
       </ul>
     </nav>
   );
