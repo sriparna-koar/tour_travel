@@ -2,7 +2,7 @@ body {
   background-color: #96aade; /* Example background color */
 }
 
-.navbar {
+/* .navbar {
   background-color: #333;
   overflow: hidden;
 }
@@ -33,7 +33,7 @@ body {
 
 .navbar .nav-link {
   display: inline-block;
-}
+} */
 /* styles.css */
 .signup-container {
   max-width: 400px;

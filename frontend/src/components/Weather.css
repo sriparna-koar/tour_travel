@@ -1,0 +1,85 @@
+/* Basic Structure */
+.weather-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.left-section {
+    flex: 1;
+    position: relative;
+    overflow: hidden; /* Ensure the curve doesn't overflow */
+}
+
+.curve-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url('default.jpeg'); /* Replace with your background image */
+    background-size: cover;
+    background-position: center;
+    border-top-right-radius: 50%;
+    border-bottom-right-radius: 50%;
+    overflow: hidden; /* Hide overflowing content */
+    z-index: 1; /* Ensure the curve image is above the overlay */
+}
+
+.right-section {
+    flex: 2;
+    padding: 20px;
+    position: relative; /* Ensure z-index works properly */
+    z-index: 2; /* Ensure content is above the curve */
+}
+
+/* Form Styles */
+.weather-form {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px; /* Increase spacing */
+}
+
+.weather-form input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+    font-size: 16px; /* Increase font size */
+}
+
+.weather-form button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px; /* Increase font size */
+}
+
+/* Additional Styles for Enhanced Design */
+.left-section:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay for better readability */
+    z-index: 2; /* Ensure overlay is above the curve */
+}
+
+.curve-image:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -50%; /* Adjust the position to overlap the curve */
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.5), transparent); /* Gradient to create a fade effect */
+    z-index: 3; /* Ensure gradient is above the overlay */
+}
+
+/* Advanced Design Features */
+/* Add your innovative design features here */
