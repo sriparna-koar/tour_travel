@@ -1,38 +1,3 @@
-// // controllers/bookingController.js
-
-// const Booking = require('../models/booking');
-
-// exports.createBooking = async (req, res) => {
-//   try {
-//     const {
-//       email,
-//       phone,
-//       entryTime,
-//       exitTime,
-//       numberOfPersons,
-//       numberOfDays,
-//       priceAverage
-//     } = req.body;
-
-//     const booking = new Booking({
-//       email,
-//       phone,
-//       entryTime,
-//       exitTime,
-//       numberOfPersons,
-//       numberOfDays,
-//       priceAverage
-//     });
-
-//     await booking.save();
-
-//     res.status(201).json({ message: 'Booking created successfully' });
-//   } catch (error) {
-//     console.error('Error creating booking:', error);
-//     res.status(500).json({ error: 'Internal server error' });
-//   }
-// };
-
 
 require('dotenv').config(); // Load environment variables
 const Booking = require('../models/booking');
