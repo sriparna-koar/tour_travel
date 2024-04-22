@@ -146,10 +146,10 @@ const BookingForm = () => {
          <button type="submit" className="submit-button">Book</button>
 
         {/* Your existing form inputs */}
-        <input type="text" value={searchLocation} onChange={e => setSearchLocation(e.target.value)} />
-        <button type="button" onClick={handleSearch}>Search Hotels</button>
+        {/* <input type="text" value={searchLocation} onChange={e => setSearchLocation(e.target.value)} />
+        <button type="button" onClick={handleSearch}>Search Hotels</button> */}
       </form>
-      <div>
+      {/* <div>
         <h3>Hotel Details</h3>
         <ul>
           {hotelDetails.map((hotel, index) => (
@@ -160,11 +160,11 @@ const BookingForm = () => {
               <strong>Region:</strong> {hotel.region}<br />
               <strong>Latitude:</strong> {hotel.latitude}<br />
               <strong>Longitude:</strong> {hotel.longitude}<br />
-              {/* Add more details as needed */}
+        
             </li>
           ))}
         </ul>
-      </div>
+      </div> */}
     </div>
   );
 };
