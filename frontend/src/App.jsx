@@ -4,7 +4,7 @@ import React, { useState,useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
 import { BrowserRouter as Router, Routes, Route, Link, Navigate,useNavigate  } from 'react-router-dom';
-import Chat from './Chat';
+
 import SignUp from './components/Signup';
 import Home from './components/Home';
 import Login from './components/Login';
@@ -12,107 +12,7 @@ import BookingForm from './components/BookingForm';
 import Hotel from './components/Hotel';
 import Weather from './components/Weather';
 import Navbar from './components/Navbar';
-
-
-// const SignUp = () => {
-//   const [username, setUsername] = useState('');
-//   const [email, setEmail] = useState('');
-//   const [password, setPassword] = useState('');
-//   const [phone, setPhone] = useState('');
-//   const [location, setLocation] = useState('');
-//   const [message, setMessage] = useState('');
-//   const navigate = useNavigate();
-
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-//     try {
-//       await axios.post('https://tour-travel-uuoe.onrender.com/signup', { username, email, password, phone, location });
-//       setMessage('User created successfully');
-//     } catch (error) {
-//       console.error(error);
-//       setMessage('Error creating user');
-//     }
-//   };
-
-//   return (
-//     <div className="signup-container animate__animated animate__fadeIn">
-//       <h2>Sign Up</h2>
-//       <form onSubmit={handleSubmit}>
-//         <div className="form-group">
-//           <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Username" required />
-//         </div>
-//         <div className="form-group">
-//           <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" required />
-//         </div>
-//         <div className="form-group">
-//           <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" required />
-//         </div>
-//         <div className="form-group">
-//           <input type="text" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="Phone" required />
-//         </div>
-//         <div className="form-group">
-//           <input type="text" value={location} onChange={(e) => setLocation(e.target.value)} placeholder="Location" required />
-//         </div>
-//         <button type="submit" className="animate__animated animate__bounceIn">Sign Up</button>
-//       </form>
-//       {message && <p>{message}</p>}
-//     </div>
-//   );
-// };
-
-// const Login = () => {
-//   const [email, setEmail] = useState('');
-//   const [password, setPassword] = useState('');
-//   const [message, setMessage] = useState('');
-//   const [isLoggedIn, setIsLoggedIn] = useState(false);
-//   const navigate = useNavigate();
-
-//   useEffect(() => {
-//     setEmail('');
-//     setPassword('');
-//   }, []);
-
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-//     try {
-//       const response = await axios.post('https://tour-travel-uuoe.onrender.com/login', { email, password });
-//       console.log(response.data);
-//       setMessage('Login successful');
-//       localStorage.setItem('isLoggedIn', true);
-//       setIsLoggedIn(true);
-//       navigate('/addtrip');
-//     } catch (error) {
-//       console.error(error);
-//       setMessage('Error logging in');
-//     }
-//   };
-
-//   const handleLogout = () => {
-//     setIsLoggedIn(false);
-//     localStorage.removeItem('isLoggedIn');
-//     setEmail('');
-//     setPassword('');
-//     navigate('/signup');
-//   };
-
-//   if (isLoggedIn) {
-//     return <Navigate to="/addtrip" />;
-//   }
-
-//   return (
-//     <div className="login-container">
-//       <h2>Login</h2>
-//       <form onSubmit={handleSubmit} className="login-form">
-//         <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" required />
-//         <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" required />
-//         <button type="submit" className="login-button">Login</button>
-//       </form>
-//       {message && <p className="login-message">{message}</p>}
-//       <button onClick={handleLogout} className="logout-button">Logout</button>
-//     </div>
-//   );
-// };
-
+// import Chat from './components/Chat';
 const AddTrip = () => {
   const [tripDate, setTripDate] = useState('');
   const [name, setName] = useState('');
@@ -144,11 +44,26 @@ const AddTrip = () => {
     <div className="add-trip-container">
       <h2>Add Trip</h2>
       <form onSubmit={handleSubmit} className="add-trip-form">
-        <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Enter Name" required />
-        <input type="date" value={tripDate} onChange={(e) => setTripDate(e.target.value)} placeholder="Trip Date" required />
-        <input type="text" value={hotelName} onChange={(e) => setHotelName(e.target.value)} placeholder="Hotel Name" required />
-        <input type="number" value={price} onChange={(e) => setPrice(e.target.value)} placeholder="Price" required />
-        <input type="text" value={locationVisited} onChange={(e) => setLocationVisited(e.target.value)} placeholder="Visited Location" required />
+        <div className="form-group">
+          <label htmlFor="name">Name:</label>
+          <input type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} placeholder="Enter Name" required />
+        </div>
+        <div className="form-group">
+          <label htmlFor="tripDate">Trip Date:</label>
+          <input type="date" id="tripDate" value={tripDate} onChange={(e) => setTripDate(e.target.value)} placeholder="Enter Trip date"required />
+        </div>
+        <div className="form-group">
+          <label htmlFor="hotelName">Hotel Name:</label>
+          <input type="text" id="hotelName" value={hotelName} onChange={(e) => setHotelName(e.target.value)} placeholder="Hotel Name" required />
+        </div>
+        <div className="form-group">
+          <label htmlFor="price">Price:</label>
+          <input type="number" id="price" value={price} onChange={(e) => setPrice(e.target.value)} placeholder="Price" required />
+        </div>
+        <div className="form-group">
+          <label htmlFor="locationVisited">Visited Location:</label>
+          <input type="text" id="locationVisited" value={locationVisited} onChange={(e) => setLocationVisited(e.target.value)} placeholder="Visited Location" required />
+        </div>
 
         <button type="submit" className="button">Add Trip</button>
       </form>
@@ -156,6 +71,50 @@ const AddTrip = () => {
     </div>
   );
 };
+
+// const AddTrip = () => {
+//   const [tripDate, setTripDate] = useState('');
+//   const [name, setName] = useState('');
+//   const [hotelName, setHotelName] = useState('');
+//   const [price, setPrice] = useState('');
+//   const [locationVisited, setLocationVisited] = useState('');
+//   const [message, setMessage] = useState('');
+//   const navigate = useNavigate();
+//   const isLoggedIn = localStorage.getItem('isLoggedIn');
+
+//   useEffect(() => {
+//     if (!isLoggedIn) {
+//       navigate('/login');
+//     }
+//   }, [isLoggedIn, navigate]);
+
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+//     try {
+//       await axios.post('https://tour-travel-uuoe.onrender.com/addtrip', { tripDate, name, hotelName, price, locationVisited });
+//       setMessage('Trip added successfully');
+//     } catch (error) {
+//       console.error(error);
+//       setMessage('Error adding trip');
+//     }
+//   };
+
+//   return (
+//     <div className="add-trip-container">
+//       <h2>Add Trip</h2>
+//       <form onSubmit={handleSubmit} className="add-trip-form">
+//         <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Enter Name" required />
+//         <input type="date" value={tripDate} onChange={(e) => setTripDate(e.target.value)} placeholder="Trip Date" required />
+//         <input type="text" value={hotelName} onChange={(e) => setHotelName(e.target.value)} placeholder="Hotel Name" required />
+//         <input type="number" value={price} onChange={(e) => setPrice(e.target.value)} placeholder="Price" required />
+//         <input type="text" value={locationVisited} onChange={(e) => setLocationVisited(e.target.value)} placeholder="Visited Location" required />
+
+//         <button type="submit" className="button">Add Trip</button>
+//       </form>
+//       {message && <p>{message}</p>}
+//     </div>
+//   );
+// };
 const AllTrips = () => {
   const [tripDetails, setTripDetails] = useState([]);
   const [message, setMessage] = useState('');
@@ -235,7 +194,7 @@ const App = () => {
         <Route path="/hotels" element={<Hotel />} />
         <Route path="/booking" element={<BookingForm />} />
         <Route path="/weather" element={<Weather />} />
-        <Route path="/Chat" element={<Chat />} />
+        {/* <Route path="/Chat" element={<Chat />} /> */}
       </Routes>
     </div>
   </Router>

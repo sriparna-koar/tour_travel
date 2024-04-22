@@ -148,7 +148,21 @@ const WeatherIcon = () => (
       <path d="M12 3v2M7 7l2.5 2.5M17 7l-2.5 2.5M4 12h16M5.6 15.6l2.8-2.8M16.6 15.6l-2.8-2.8M7 17l2.5-2.5M17 17l-2.5-2.5M12 21v-2" />
     </svg>
   );
-  
+  const ChatIcon = () => (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M12 3v2M7 7l2.5 2.5M17 7l-2.5 2.5M4 12h16M5.6 15.6l2.8-2.8M16.6 15.6l-2.8-2.8M7 17l2.5-2.5M17 17l-2.5-2.5M12 21v-2" />
+    </svg>
+  );
 
 
 const Navbar = () => {
@@ -207,7 +221,8 @@ const Navbar = () => {
           </Link>
         </li>
         <li>
-          <Link to="/Chat" className="nav-link">Chat</Link>
+          <Link to="/Chat" className="nav-link">
+          <ChatIcon />Chat</Link>
         </li>
       </ul>
     </nav>

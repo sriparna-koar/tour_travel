@@ -38,7 +38,7 @@
 }
 
 .banner p {
-  font-size: 18px; /* Decrease font size for mobile */
+  font-size: 28px; /* Decrease font size for mobile */
   margin-bottom: 20px;
 }
 
@@ -67,6 +67,11 @@
 .explore-btn {
   font-size: 16px; /* Decrease font size for mobile */
   padding: 10px 20px; /* Adjust padding for mobile */
+}
+.explore-heading {
+  font-size: 24px;
+  color: blue; /* Change color to blue */
+  margin-bottom: 20px;
 }
 
 /* Mobile specific styles */

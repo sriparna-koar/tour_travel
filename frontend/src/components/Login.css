@@ -184,3 +184,23 @@ body {
 h2{
   color:white;
 }
+.login__message {
+    position: absolute;
+    top: 20px; /* Adjust the top position to provide space from the top */
+    left: 0; /* Center the message horizontally */
+    width: 100%;
+    text-align: center;
+    background-color: #ff0000; /* Background color for error messages */
+    color: #fff; /* Text color for error messages */
+    padding: 10px 0; /* Padding for better readability */
+    z-index: 1; /* Ensure the message appears above other content */
+    box-sizing: border-box; /* Include padding in the width calculation */
+}
+
+@media screen and (min-width: 768px) {
+    .login {
+        width: 400px; /* Restore width for larger screens */
+        padding: 30px; /* Restore padding for larger screens */
+        padding-top: 156px; /* Restore top padding for larger screens */
+    }
+}

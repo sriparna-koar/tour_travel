@@ -19,7 +19,7 @@ const Home = () => {
             <h2 className="explore-heading">Explore Our Trips</h2>
             <p className="trip-paragraph">Embark on a journey to discover breathtaking destinations across the globe. Whether you crave adrenaline-pumping adventures, serene escapes, or cultural immersions, Wanderlust Travels has the perfect expedition for you.</p>
             <p className="trip-paragraph">Our expert guides and meticulously crafted itineraries ensure a seamless and enriching travel experience. Let us be your compass as you navigate through the wonders of the world.</p>
-            <button className="explore-btn">Start Exploring</button>
+
           </div>
         </div>
       </div>
