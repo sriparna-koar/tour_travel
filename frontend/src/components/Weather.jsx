@@ -1,7 +1,5 @@
-
 import React, { useState, useEffect } from 'react';
 import { GoogleGenerativeAI } from "@google/generative-ai";
-
 import './Weather.css';
 
 const Weather = () => {
@@ -10,7 +8,6 @@ const Weather = () => {
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
     const [backgroundImage, setBackgroundImage] = useState('/default.jpg');
-
     const [history, setHistory] = useState([]);
     const [model, setModel] = useState(null);
 
@@ -66,31 +63,41 @@ const Weather = () => {
             setLoading(false);
         }
     };
-    
+
     const handleSubmitChat = async (e) => {
         e.preventDefault();
         const prompt = e.target.elements.prompt.value.trim();
         if (!prompt) return;
+
+        const newUserRole = {
+            role: "user",
+            parts: prompt,
+        };
+        setHistory([...history, newUserRole, { role: "loading", parts: "Loading..." }]);
+
         try {
-            const chat = await model.startChat({ history: history.map(item => ({ role: item.role, parts: typeof item.parts === 'string' ? item.parts : { text: item.parts } })) });
+            const chat = await model.startChat({ history: [] }); // Start with an empty history
             const result = await chat.sendMessage(prompt);
             const response = await result.response;
             const text = await response.text();
-            const newUserRole = {
-                role: "user",
-                parts: prompt,
-            };
             const newAIRole = {
                 role: "model",
                 parts: text,
             };
-            setHistory([...history, newUserRole, newAIRole]);
+
+            setHistory((prevHistory) => {
+                const updatedHistory = [...prevHistory];
+                updatedHistory[updatedHistory.length - 1] = newAIRole; // Replace the loading message with the actual response
+                return updatedHistory;
+            });
         } catch (error) {
             console.error(error);
+            setHistory((prevHistory) => prevHistory.filter((item) => item.role !== "loading"));
         }
+
         e.target.elements.prompt.value = '';
     };
-    
+
     return (
         <div className="main-container" style={{ backgroundImage: `url(${backgroundImage})` }}>
             <div className="weather-container">
@@ -115,7 +122,11 @@ const Weather = () => {
                 <div className="chat-container">
                     {history.map((item, index) => (
                         <div key={index} className={`chat-message ${item.role}`}>
-                            <p>{typeof item.parts === 'string' ? item.parts : item.parts.text}</p>
+                            <p>
+                                {item.role === "user" && <span className="icon">🧑</span>}
+                                {item.role === "model" && <span className="icon">🤖</span>}
+                                {typeof item.parts === 'string' ? item.parts : item.parts.text}
+                            </p>
                         </div>
                     ))}
                 </div>

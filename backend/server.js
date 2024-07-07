@@ -14,8 +14,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 mongoose.connect('mongodb+srv://koarsk03:czBOQJPJnyItRbMp@cloudpadproject.qugmdjn.mongodb.net/', {
-  // useNewUrlParser: true,
-  // useUnifiedTopology: true,
+  
 });
 app.get('/', (request, response) => {
   console.log(request);

@@ -1,15 +1,6 @@
-/* Home Page Styles */
 
-/* Common styles for both desktop and mobile */
 
-.home-container {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  height: 100vh;
-}
-
-.background-container {
+/* .background-container {
   position: absolute;
   top: 0;
   left: 0;
@@ -18,111 +9,220 @@
   background-image: url('https://img.freepik.com/free-vector/flat-design-travel-background_23-2149193475.jpg');
   background-size: cover;
   background-position: center;
+} */
+
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+.home-container {
+  color: #333;
+  text-align: center;
+  position: relative;
+  background: linear-gradient(135deg, #f1f1f3 0%, #f1f6ff 100%); /* Blue gradient background */
+
 }
 
+.background-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.background-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.background-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 .content-container {
+  padding: 40px 20px;
   position: relative;
   z-index: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  color: #000648;
-  text-align: center; /* Center text for both desktop and mobile */
+  background: linear-gradient(135deg, #f5f5f5 0%, #ebedf1 100%,0.9);  /* Slightly transparent background */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  margin: 20px auto;
+
+}
+
+.banner {
+  margin-bottom: 60px;
 }
 
 .banner h1 {
-  font-size: 36px; /* Decrease font size for mobile */
-  margin-bottom: 15px; /* Decrease margin for mobile */
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  color: #000129;
+  font-weight: 700;
+  text-transform: uppercase;
 }
 
 .banner p {
-  font-size: 28px; /* Decrease font size for mobile */
-  margin-bottom: 20px;
+  font-size: 1.3em;
+  margin-bottom: 30px;
+  color: #666;
 }
 
 .trip-info {
   display: flex;
-  flex-direction: column; /* Change flex direction for mobile */
+  flex-direction: column;
   align-items: center;
-  margin-top: 30px; /* Decrease margin for mobile */
+  margin-bottom: 60px;
+  text-align: left;
 }
-
-.trip-info img {
-  width: 200px; /* Decrease image size for mobile */
-  margin: 0 auto 20px; /* Center image and decrease margin for mobile */
+.trip-paragraph {
+  color: #250505;
 }
-
-.trip-description h2 {
-  font-size: 24px; /* Decrease font size for mobile */
-  margin-bottom: 15px; /* Decrease margin for mobile */
-}
-
-.trip-description p {
-  font-size: 16px; /* Decrease font size for mobile */
-  margin-bottom: 10px; /* Decrease margin for mobile */
-}
-
-.explore-btn {
-  font-size: 16px; /* Decrease font size for mobile */
-  padding: 10px 20px; /* Adjust padding for mobile */
-}
-.explore-heading {
-  font-size: 24px;
-  color: blue; /* Change color to blue */
-  margin-bottom: 20px;
-}
-
-/* Mobile specific styles */
-
-@media only screen and (max-width: 600px) {
-  .banner h1 {
-      font-size: 24px;
-  }
-
-  .banner p {
-      font-size: 16px;
-  }
-
-  .trip-info {
-      margin-top: 20px;
-  }
-
-  .trip-info img {
-      width: 150px;
-  }
-
-  .trip-description h2 {
-      font-size: 20px;
-  }
-
-  .trip-description p {
-      font-size: 14px;
-  }
-
-  .explore-btn {
-      font-size: 14px;
-  }
-}
-
-/* Animation for logo */
-
-@keyframes logoAnimation {
-  0% {
-      transform: scale(0.8) rotate(0deg);
-  }
-}
-
 .tour-travel-logo {
-  width: 100px;
-  margin-bottom: 10px;
-  animation: logoAnimation 5s infinite ease-in-out;
-  border-radius: 50%;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease-in-out;
+  width: 200px;
+  height: auto;
+  margin-bottom: 30px;
 }
 
-.tour-travel-logo:hover {
-  transform: scale(1.1);
+.trip-description {
+  max-width: 800px;
+  text-align: center;
+}
+
+.explore-heading {
+  font-size: 2.2em;
+  color: #010030;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.trip-paragraph {
+  margin-bottom: 15px;
+  font-size: 1.1em;
+  line-height: 1.6;
+}
+
+.gallery-container {
+  margin-bottom: 60px;
+  padding: 0 20px;
+}
+
+.gallery-heading {
+  font-size: 2.2em;
+  color: #030031;
+  margin-bottom: 40px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.gallery-item {
+  margin: 15px;
+  width: 350px;
+  height: 250px;
+  text-align: left;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.gallery-item:hover {
+  transform: scale(1.05);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  object-fit: cover;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.gallery-item-info {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 15px;
+  border-radius: 10px;
+  width: calc(100% - 40px);
+  box-sizing: border-box;
+}
+
+.testimonial-container {
+  margin-bottom: 60px;
+}
+
+.testimonial-heading {
+  font-size: 2.2em;
+  color: #030031;
+  margin-bottom: 40px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+.testimonial p{
+  color: #030031;
+}
+.testimonials {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.testimonial {
+  background: #fff;
+  padding: 30px;
+  margin: 20px 0;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  width: 60%;
+  transition: box-shadow 0.3s ease;
+}
+
+.testimonial:hover {
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.testimonial h3 {
+  margin-top: 15px;
+  color: #030031;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .trip-info {
+    flex-direction: column;
+  }
+
+  .tour-travel-logo {
+    margin-bottom: 20px;
+  }
+
+  .gallery-item {
+    width: 100%;
+    height: auto;
+  }
+
+  .gallery-item-info {
+    width: calc(100% - 40px);
+  }
+
+  .testimonial {
+    width: 90%;
+  }
 }

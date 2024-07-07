@@ -1,0 +1,152 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.booking-form-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.booking-form-container {
+  background: linear-gradient(45deg, #c6cad0, #cdd0e1, #fbfdff, #e4edf5);
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.booking-form-section, .hotel-search-section {
+  width: 100%;
+  padding: 40px;
+  flex: 1;
+}
+
+.form-title, .search-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+  text-align: center;
+}
+
+.booking-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 16px;
+  background: #f0f4f8;
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+}
+
+.form-input::placeholder {
+  color: #666;
+}
+
+.form-input:focus {
+  border-color: #2196f3;
+  background: #fff;
+}
+
+.submit-button {
+  padding: 15px;
+  background: #2196f3;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+  background: #1976d2;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.search-input {
+  flex: 1;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 16px;
+  background: #f0f4f8;
+  margin-right: 10px;
+  transition: all 0.3s ease;
+}
+
+.search-input:focus {
+  border-color: #2196f3;
+  background: #fff;
+}
+
+.search-button {
+  padding: 12px 20px;
+  background: #2196f3;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.search-button:hover {
+  background: #1976d2;
+}
+
+.hotel-details {
+  margin-top: 20px;
+  max-height: 400px; /* Set a maximum height */
+  overflow-y: auto; /* Enable vertical scrolling */
+}
+
+.hotel-details ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.hotel-details li {
+  background: #f0f4f8;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.hotel-details li strong {
+  color: #333;
+}
