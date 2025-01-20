@@ -41,22 +41,126 @@ const BookingForm = () => {
       alert('Error creating booking. Please try again.');
     }
   };
-
-  const fetchHotelDetails = async location => {
+  // const fetchHotelDetails = async (location) => {
+  //   try {
+  //     const response = await axios({
+  //       method: 'GET',
+  //       url: `https://engine.hotellook.com/api/v2/cache.json`,
+  //       params: {
+  //         location,
+  //         currency: 'USD',
+  //         checkIn: '2025-01-25',
+  //         checkOut: '2025-01-30',
+  //         limit: 10,
+  //       },
+  //     });
+  
+  //     // Log the response to check the data
+  //     console.log('Travelpayouts API Response:', response.data);
+  
+  //     return response.data; // Array of hotels
+  //   } catch (error) {
+  //     console.error('Error fetching hotel details:', error);
+  //     return [];
+  //   }
+  // };
+  
+  
+  // const fetchHotelDetails = async location => {
+  //   try {
+  //     const response = await axios({
+  //       method: 'GET',
+  //       url: 'https://booking-com.p.rapidapi.com/v1/hotels/locations',
+  //       params: {
+  //         name: location,
+  //         locale: 'en-gb'
+  //       },
+  //       headers: {
+  //         'X-RapidAPI-Key': '0ea7eb1741msh4b6b034aea1c498p16ab8djsnc2e94180977e',
+  //         'X-RapidAPI-Host': 'booking-com.p.rapidapi.com'
+  //       }
+  //     });
+  //     return response.data;
+  //   } catch (error) {
+  //     console.error('Error fetching hotel details:', error);
+  //     return [];
+  //   }
+  // };
+  // const fetchLocationId = async (query) => {
+  //   try {
+  //     const response = await axios.get('https://maps.googleapis.com/maps/api/place/autocomplete/json', {
+  //       params: {
+  //         input: query,
+  //         key: 'YOUR_GOOGLE_API_KEY', // Replace with your Google API key
+  //       },
+  //     });
+  //     const predictions = response.data.predictions;
+  //     if (predictions.length > 0) {
+  //       return predictions[0].description; // Use the first matched description or place ID
+  //     }
+  //     return null;
+  //   } catch (error) {
+  //     console.error('Error fetching location ID:', error);
+  //     return null;
+  //   }
+  // };
+  // const fetchHotelDetails = async (query) => {
+  //   try {
+  //     // Fetch properly formatted location
+  //     const location = await fetchLocationId(query);
+  
+  //     if (!location) {
+  //       console.error('Location not found for query:', query);
+  //       return [];
+  //     }
+  
+  //     // Fetch hotel details
+  //     const response = await axios.get(`https://engine.hotellook.com/api/v2/cache.json`, {
+  //       params: {
+  //         location,
+  //         currency: 'USD',
+  //         checkIn: '2025-01-25',
+  //         checkOut: '2025-01-30',
+  //         limit: 40,
+  //       },
+  //     });
+  
+  //     const hotels = response.data.map((hotel) => ({
+  //       hotelId: hotel.hotelId,
+  //       hotelName: hotel.hotelName,
+  //       location: hotel.location,
+  //       priceAvg: hotel.priceAvg,
+  //       stars: hotel.stars,
+  //     }));
+  
+  //     return hotels;
+  //   } catch (error) {
+  //     console.error('Error fetching hotel details:', error);
+  //     return [];
+  //   }
+  // };
+  
+  const fetchHotelDetails = async (location) => {
     try {
-      const response = await axios({
-        method: 'GET',
-        url: 'https://booking-com.p.rapidapi.com/v1/hotels/locations',
+      const response = await axios.get(`https://engine.hotellook.com/api/v2/cache.json`, {
         params: {
-          name: location,
-          locale: 'en-gb'
+          location,
+          currency: 'USD',
+          checkIn: '2025-01-25',
+          checkOut: '2025-01-30',
+          limit: 40,
         },
-        headers: {
-          'X-RapidAPI-Key': '0ea7eb1741msh4b6b034aea1c498p16ab8djsnc2e94180977e',
-          'X-RapidAPI-Host': 'booking-com.p.rapidapi.com'
-        }
       });
-      return response.data;
+
+      const hotels = response.data.map((hotel) => ({
+        hotelId: hotel.hotelId,
+        hotelName: hotel.hotelName,
+        location: hotel.location,
+        priceAvg: hotel.priceAvg,
+        stars: hotel.stars,
+      }));
+
+      return hotels;
     } catch (error) {
       console.error('Error fetching hotel details:', error);
       return [];
@@ -155,7 +259,19 @@ const BookingForm = () => {
           <div className="hotel-details">
             {hotelDetails.length > 0 && (
               <ul>
+                 {hotelDetails.length > 0 && (
+              <ul>
                 {hotelDetails.map((hotel, index) => (
+                  <li key={index}>
+                    <strong>Hotel Name:</strong> {hotel.hotelName} <br />
+                    <strong>Location:</strong> {hotel.location.name}, {hotel.location.country} <br />
+                    <strong>Price Average:</strong> ${hotel.priceAvg.toFixed(2)} <br />
+                    <strong>Stars:</strong> {hotel.stars} ★<br />
+                  </li>
+                ))}
+              </ul>
+            )}
+                {/* {hotelDetails.map((hotel, index) => (
                   <li key={index}>
                     <strong>Name:</strong> {hotel.name}<br />
                     <strong>Number of Hotels:</strong> {hotel.nr_hotels}<br />
@@ -164,7 +280,7 @@ const BookingForm = () => {
                     <strong>Latitude:</strong> {hotel.latitude}<br />
                     <strong>Longitude:</strong> {hotel.longitude}<br />
                   </li>
-                ))}
+                ))} */}
               </ul>
             )}
           </div>

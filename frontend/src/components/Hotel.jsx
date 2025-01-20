@@ -1,6 +1,7 @@
+
 // import React, { useState, useEffect } from 'react';
-// import { Link } from 'react-router-dom'; // Import Link from React Router
-// import './Hotel.css';
+// import { Link } from 'react-router-dom';
+// import './Hotel.css'; 
 
 // const Hotel = () => {
 //   const [hotels, setHotels] = useState([]);
@@ -22,10 +23,9 @@
 //     fetchHotels();
 //   }, []);
 
-
 //   return (
 //     <div className="hotel-container">
-//       <h1 className="hotel-heading">Hotels</h1>
+//       <h1 className="hotel-heading">Our Premium Hotels</h1>
 //       <div className="hotel-cards-container">
 //         {hotels.map((hotel, index) => (
 //           <div key={index} className="hotel-card">
@@ -34,13 +34,13 @@
 //             </div>
 //             <div className="hotel-details">
 //               <h2 className="hotel-name">{hotel.name}</h2>
-//               <p className="hotel-price">Price: ${hotel.price}</p>
-//               <p className="hotel-location">Location: {hotel.location}</p>
+//               <p className="hotel-price"><strong>Price:</strong> ${hotel.price}</p>
+//               <p className="hotel-location"><strong>Location:</strong> {hotel.location}</p>
 //               <p className="hotel-food-supply">
-//                 Food Supply: {hotel.foodSupply ? 'Available' : 'Not Available'}
+//                 <strong>Food Supply:</strong> {hotel.foodSupply ? 'Available' : 'Not Available'}
 //               </p>
 //               <p className="hotel-nearby-features">
-//                 Nearby Features: {hotel.nearbyFeatures.join(', ')}
+//                 <strong>Nearby Features:</strong> {hotel.nearbyFeatures.join(', ')}
 //               </p>
 //               <Link
 //                 to={{
@@ -62,7 +62,7 @@
 // export default Hotel;
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import './Hotel.css'; // Ensure your CSS file is updated accordingly
+import './Hotel.css';
 
 const Hotel = () => {
   const [hotels, setHotels] = useState([]);
@@ -75,7 +75,7 @@ const Hotel = () => {
           throw new Error('Failed to fetch hotels');
         }
         const data = await response.json();
-        setHotels(data);  
+        setHotels(data);
       } catch (error) {
         console.error('Error fetching hotels:', error);
       }
@@ -86,7 +86,7 @@ const Hotel = () => {
 
   return (
     <div className="hotel-container">
-      <h1 className="hotel-heading">Our Premium Hotels</h1>
+      <h1 className="hotel-heading">Discover Luxury Stays</h1>
       <div className="hotel-cards-container">
         {hotels.map((hotel, index) => (
           <div key={index} className="hotel-card">
@@ -95,19 +95,16 @@ const Hotel = () => {
             </div>
             <div className="hotel-details">
               <h2 className="hotel-name">{hotel.name}</h2>
-              <p className="hotel-price"><strong>Price:</strong> ${hotel.price}</p>
-              <p className="hotel-location"><strong>Location:</strong> {hotel.location}</p>
+              <p className="hotel-price">${hotel.price} / night</p>
+              <p className="hotel-location">{hotel.location}</p>
               <p className="hotel-food-supply">
-                <strong>Food Supply:</strong> {hotel.foodSupply ? 'Available' : 'Not Available'}
+                {hotel.foodSupply ? 'Food Included' : 'No Food Supply'}
               </p>
               <p className="hotel-nearby-features">
-                <strong>Nearby Features:</strong> {hotel.nearbyFeatures.join(', ')}
+                {hotel.nearbyFeatures.slice(0, 3).join(', ')}...
               </p>
               <Link
-                to={{
-                  pathname: '/booking',
-                  state: { hotel } 
-                }}
+                to={{ pathname: '/booking', state: { hotel } }}
                 className="book-now-link"
               >
                 Book Now

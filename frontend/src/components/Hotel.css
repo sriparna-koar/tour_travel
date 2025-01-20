@@ -1,48 +1,50 @@
-/* Hotel.css */
-
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+/* 
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
 .hotel-container {
-  padding: 40px 20px;
-  background: #f8f9fa;
+  padding: 20px;
+  background: linear-gradient(to bottom, #f0f4f8, #d9e3ea);
+  font-family: 'Roboto', sans-serif;
 }
 
 .hotel-heading {
   text-align: center;
-  font-size: 3rem;
-  color: #343a40;
-  margin-bottom: 40px;
-  font-family: 'Roboto', sans-serif;
+  font-size: 2.5rem;
+  color: #2c3e50;
+  margin-bottom: 30px;
+  font-weight: 700;
 }
 
 .hotel-cards-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 15px;
+  margin: 0 auto;
 }
 
 .hotel-card {
-  background: white;
-  border-radius: 15px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
   display: flex;
   flex-direction: column;
 }
 
 .hotel-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transform: translateY(-8px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
 .hotel-image-container {
+  height: 160px;
   overflow: hidden;
 }
 
 .hotel-image {
   width: 100%;
-  height: 200px;
+  height: 100%;
   object-fit: cover;
   transition: transform 0.3s ease;
 }
@@ -52,44 +54,184 @@
 }
 
 .hotel-details {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.hotel-name {
+  font-size: 1.2rem;
+  color: #34495e;
+  font-weight: 500;
+}
+
+.hotel-price {
+  font-size: 1rem;
+  color: #2980b9;
+  font-weight: 700;
+}
+
+.hotel-location,
+.hotel-food-supply,
+.hotel-nearby-features {
+  font-size: 0.9rem;
+  color: #7f8c8d;
+  margin: 0;
+}
+
+.book-now-link {
+  margin-top: auto;
+  padding: 10px;
+  background: #3498db;
+  color: white;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.book-now-link:hover {
+  background: #2980b9;
+} */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+
+  overflow-x: hidden;
+}
+
+.hotel-container {
   padding: 20px;
-  flex: 1;
+
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.hotel-heading {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #2c3e50;
+  margin-bottom: 30px;
+  font-weight: 700;
+}
+
+.hotel-cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 15px;
+}
+
+.hotel-card {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
   display: flex;
   flex-direction: column;
 }
 
+.hotel-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.hotel-image-container {
+  height: 160px;
+  overflow: hidden;
+}
+
+.hotel-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.hotel-card:hover .hotel-image {
+  transform: scale(1.1);
+}
+
+.hotel-details {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 100%;
+}
+
 .hotel-name {
-  font-size: 1.8rem;
-  margin-bottom: 10px;
-  color: #343a40;
-  font-family: 'Roboto', sans-serif;
+  font-size: 1.2rem;
+  color: #34495e;
+  font-weight: 500;
 }
 
-.hotel-price, .hotel-location, .hotel-food-supply, .hotel-nearby-features {
-  margin-bottom: 5px;
+.hotel-price {
   font-size: 1rem;
-  color: #6c757d;
-  font-family: 'Roboto', sans-serif;
+  color: #2980b9;
+  font-weight: 700;
 }
 
-.hotel-price strong, .hotel-location strong, .hotel-food-supply strong, .hotel-nearby-features strong {
-  color: #343a40;
+.hotel-location,
+.hotel-food-supply,
+.hotel-nearby-features {
+  font-size: 0.9rem;
+  color: #7f8c8d;
+  margin: 0;
 }
 
 .book-now-link {
-  display: inline-block;
   margin-top: auto;
-  padding: 10px 20px;
-  background: #007bff;
+  padding: 10px;
+  background: #3498db;
   color: white;
-  border-radius: 5px;
+  border-radius: 8px;
   text-align: center;
+  font-size: 0.9rem;
+  font-weight: 500;
   text-decoration: none;
-  font-weight: bold;
   transition: background 0.3s ease;
-  font-family: 'Roboto', sans-serif;
 }
 
 .book-now-link:hover {
-  background: #0056b3;
+  background: #2980b9;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hotel-container {
+    padding: 10px;
+  }
+
+  .hotel-heading {
+    font-size: 2rem;
+  }
+
+  .hotel-cards-container {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+
+  .hotel-card {
+    margin-bottom: 15px;
+  }
+
+  .hotel-image-container {
+    height: 140px;
+  }
+}
+
+/* Handle scrolling */
+body, html {
+  height: 100%;
+  overflow-y: auto;
+}
+
+.hotel-container {
+  min-height: 100vh;
 }
