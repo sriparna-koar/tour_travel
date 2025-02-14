@@ -110,7 +110,7 @@ import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faEnvelope, faLock, faEye, faEyeSlash, faPhone, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom'; // For redirection
-import { toast } from 'react-toastify'; // For toast messages
+import { toast } from 'react-hot-toast'; // For toast messages
 import 'react-toastify/dist/ReactToastify.css'; // For toast styling
 import './signup.css';
 
