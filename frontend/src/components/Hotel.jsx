@@ -273,7 +273,7 @@ const Hotel = () => {
         return;
       }
   
-      const response = await fetch("http://localhost:5001/create-order", {
+      const response = await fetch("https://tour-travel-uuoe.onrender.com/create-order", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ hotelId: hotel._id, amount: hotel.price }),
@@ -291,7 +291,7 @@ const Hotel = () => {
         order_id: data.order.id,
         handler: async (paymentResponse) => {
           try {
-            await fetch("http://localhost:5001/verify-payment", {
+            await fetch("https://tour-travel-uuoe.onrender.com/verify-payment", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify({
