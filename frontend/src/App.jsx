@@ -10,6 +10,7 @@ import Hotel from './components/Hotel';
 import Weather from './components/Weather';
 import AddTrip from './components/AddTrip';
 import AllTrips from './components/AllTrips';
+import Searchhotels from './components/Searchhotels';
 import './App.css';
 
 const App = () => {
@@ -24,6 +25,7 @@ const App = () => {
           <Route path="/addtrip" element={<AddTrip />} />
           <Route path="/alltrip" element={<AllTrips />} />
           <Route path="/hotels" element={<Hotel />} />
+          <Route path="/search" element={<Searchhotels />} />
           <Route path="/booking" element={<BookingForm />} />
           <Route path="/weather" element={<Weather />} />
         </Routes>

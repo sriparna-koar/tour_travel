@@ -366,7 +366,7 @@ const Hotel = () => {
         <Table>
           <TableHead className="bg-blue-500 text-white">
             <TableRow>
-              <TableCell className="text-white font-semibold">Image</TableCell>
+              {/* <TableCell className="text-white font-semibold">Image</TableCell> */}
               <TableCell className="text-white font-semibold">Name</TableCell>
               <TableCell className="text-white font-semibold">Price</TableCell>
               <TableCell className="text-white font-semibold">Location</TableCell>
@@ -377,9 +377,9 @@ const Hotel = () => {
           <TableBody>
             {hotels.map((hotel) => (
               <TableRow key={hotel._id} className="hover:bg-blue-100 transition-all">
-                <TableCell>
+                {/* <TableCell>
                   <img src={hotel.picture?.trim() ? hotel.picture : DEFAULT_IMAGE} alt={hotel.name || "Default Hotel"} className="w-16 h-16 rounded-lg shadow-md" />
-                </TableCell>
+                </TableCell> */}
                 <TableCell className="font-semibold text-blue-800">{hotel.name}</TableCell>
                 <TableCell className="text-blue-700">${hotel.price} / night</TableCell>
                 <TableCell className="text-gray-700">{hotel.location}</TableCell>
